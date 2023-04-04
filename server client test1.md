@@ -23,6 +23,7 @@ int main(int argc, char *argv[]){
 		exit(0);
 	}
 	
+	// (char * haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
 	if((s = socket(PF_INET, SOCK_STREAM, 0)) < 0){
 		printf("Cant't create socket\n");
 		exit(0);
@@ -30,8 +31,8 @@ int main(int argc, char *argv[]){
 	
 	bzero((char *)&server_addr, sizeof(server_addr));
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = inet_addr(argv[1]);
-	server_addr.sin_port = htons(atoi(argv[2]));
+	server_addr.sin_addr.s_addr = inet_addr(argv[1]); //inet_addr의 인자를 haddr에서 argv[1]로 수정
+	server_addr.sin_port = htons(atoi(argv[2])); //서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
 	
 	if(connect(s, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0){
 		printf("Can't connect.\n");
@@ -65,7 +66,7 @@ int main(int argc, char *argv[]){
 }
 ```
 ### 수정내용
-* (char *haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
+* (char * haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
 * inet_addr의 인자를 haddr에서 argv[1]로 수정
 * 서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
 
@@ -97,7 +98,7 @@ int main(int argc, char *argv[]) {
 	
 	bzero((char *)&server_addr, sizeof(server_addr));
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = inet_addr(argv[2]);
+	server_addr.sin_addr.s_addr = inet_addr(argv[2]); //INADDR_ANY대신 서버의 주소를 인자로 입력하게 수정
 	server_addr.sin_port = htons(atoi(argv[1]));
 	
 	if(bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0){
@@ -107,7 +108,7 @@ int main(int argc, char *argv[]) {
 	
 	listen(server_fd, 5);
 	
-	len = sizeof(client_addr);
+	len = sizeof(client_addr); //len = sizeof(client_addr);//client_addr while(1)안에서 값에서 변하지 않기 때문에 반복문 밖으로 수정
 	
 	while(1) {
 		printf("Server : waiting connection request.\n");
@@ -115,7 +116,7 @@ int main(int argc, char *argv[]) {
 		client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &len);
 		if(client_fd < 0) {
 			printf("Server: accept failed.\n");
-			continue;
+			continue; //accept를 실패해도 끝내지 않고 계속 돌아가게 exit(0)에서 continue로 수정
 		}
 		
 		printf("Server : A client connected.\n");
