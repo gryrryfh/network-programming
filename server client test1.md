@@ -2,6 +2,7 @@
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
 ``` c
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -70,6 +71,7 @@ int main(int argc, char *argv[]){
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
 ``` c
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
