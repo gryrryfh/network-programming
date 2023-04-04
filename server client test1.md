@@ -65,9 +65,9 @@ int main(int argc, char *argv[]){
 }
 ```
 ### 수정내용
-* 13라인(char *haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
-* 28라인 inet_addr의 인자를 haddr에서 argv[1]로 수정
-* 29라인 서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
+* (char *haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
+* inet_addr의 인자를 haddr에서 argv[1]로 수정
+* 서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
 ``` c
@@ -127,9 +127,9 @@ int main(int argc, char *argv[]) {
 }
 ```
 ### 수정내용
-* 26라인 INADDR_ANY대신 서버의 주소를 인자로 입력하게 수정
-* 36라인 len = sizeof(client_addr);//client_addr while(1)안에서 값에서 변하지 않기 때문에 반복문 밖으로 수정
-* 44라인 accept를 실패해도 끝내지 않고 계속 돌아가게 exit(0)에서 continue로 수정
+*  INADDR_ANY대신 서버의 주소를 인자로 입력하게 수정
+*  len = sizeof(client_addr);//client_addr while(1)안에서 값에서 변하지 않기 때문에 반복문 밖으로 수정
+*  accept를 실패해도 끝내지 않고 계속 돌아가게 exit(0)에서 continue로 수정
 
 ### 클라이언트 실행화면
 ![image](https://user-images.githubusercontent.com/50912987/229797521-1a46ff1a-37df-471b-90c2-9324aab87ec6.png)
