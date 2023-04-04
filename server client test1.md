@@ -65,6 +65,7 @@ int main(int argc, char *argv[]){
 * 13라인(char *haddr;)과 20라인(haddr = argv[1];)은 포인터로 28라인의 s.addr에 argv[1]의 값을 넣을것이기 때문에 포인터를 사용하지 않아도됨
 * 28라인 inet_addr의 인자를 haddr에서 argv[1]로 수정
 * 29라인 서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
+
 ```
 // 비효율적인 코드가 수정된 클라이언트 코드
 #include <sys/types.h>
