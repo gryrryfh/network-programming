@@ -1,7 +1,7 @@
 ## 20191128 이재경
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
-``` 
+``` c
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
