@@ -127,4 +127,10 @@ int main(int argc, char *argv[]) {
 * 36라인 len = sizeof(client_addr);//client_addr while(1)안에서 값에서 변하지 않기 때문에 반복문 밖으로 수정
 * 44라인 accept를 실패해도 끝내지 않고 계속 돌아가게 exit(0)에서 continue로 수정
 
+### 클라이언트 실행화면
+![image](https://user-images.githubusercontent.com/50912987/229797521-1a46ff1a-37df-471b-90c2-9324aab87ec6.png)
+
+### 서버 실행화면
+![image](https://user-images.githubusercontent.com/50912987/229797737-8d5b1177-3659-410a-9de1-69b28d6ff8c2.png)
+
 
