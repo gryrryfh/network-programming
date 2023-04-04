@@ -1,7 +1,7 @@
 ## 20191128 이재경
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
-```
+``` 
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -69,7 +69,7 @@ int main(int argc, char *argv[]){
 * 29라인 서버의 포트번호를 인자로 입력하기 위해 포트번호를 atoi(argv[2])로 수정
 
 ## 비효율적인 코드가 수정된 클라이언트 코드
-```
+``` c
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
