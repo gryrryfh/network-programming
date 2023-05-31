@@ -207,3 +207,52 @@ public class ThreadExample implements Runnable {
 }
 
 ```
+```
+public class MyThread extends Thread {
+    int threadNum;
+
+    public MyThread(int threadNum) {
+        this.threadNum = threadNum;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Start main method.");
+        for (int i = 0; i < 10; i++) {
+            MyThread test = new MyThread(i);
+            test.start();
+        }
+        
+        System.out.println("End main method.");
+    }
+
+    @Override
+    public void run() {
+        System.out.println(threadNum + " empty thread working ...");
+        try {
+            long s = (long)(Math.random() * 3000);
+            Thread.sleep(s);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(threadNum + " empty thread working end...");
+        
+        long tStart = System.currentTimeMillis();
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Thread " + threadNum + ": ");
+            for (int k = 0; k < i; k++)
+                System.out.print("o");
+            for (int j = 0; j < 5 - i; j++)
+                System.out.print("x");
+            System.out.println();
+            try {
+                Thread.sleep((int) (Math.random() * 1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        long tEnd = System.currentTimeMillis();
+        System.out.println("Thread " + threadNum + " end " + "Process exited after " + (double) (tEnd - tStart) / 1000 + " seconds");
+    }
+}
+
+```
