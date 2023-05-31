@@ -155,3 +155,55 @@ public class ThreadExample implements Runnable {
     }
 }
 ```
+```
+import java.util.Random;
+
+public class ThreadExample implements Runnable {
+    int threadNum;
+
+    public ThreadExample(int threadNum) {
+        this.threadNum = threadNum;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        for (int i = 0; i < Integer.parseInt(args[0]); i++) {
+            ThreadExample f = new ThreadExample(i);
+            Thread t = new Thread(f);
+            t.start();
+            Thread.sleep(200);
+        }
+        System.out.println("ho~");
+    }
+
+    @Override
+    public void run() {
+        System.out.println(threadNum + " empty thread working ...");
+        Random r = new Random(System.currentTimeMillis());
+        try {
+            long s = r.nextInt(3000);
+            Thread.sleep(s);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(threadNum + " empty thread working end...");
+
+        long tStart = System.currentTimeMillis();
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Thread " + ThreadExample.this.threadNum + ": ");
+            for (int k = 0; k < i; k++)
+                System.out.print("o");
+            for (int j = 0; j < 5 - i; j++)
+                System.out.print("x");
+            System.out.println();
+            try {
+                Thread.sleep((int) (Math.random() * 1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        long tEnd = System.currentTimeMillis();
+        System.out.println("Thread " + ThreadExample.this.threadNum + " end " + "Process exited after " + (double) (tEnd - tStart) / 1000 + " seconds");
+    }
+}
+
+```
