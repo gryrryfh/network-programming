@@ -1,4 +1,3 @@
-```
 import java.net.*;
 import java.io.*;
 import java.nio.file.*;
@@ -44,9 +43,8 @@ public class UDPMyEcho {
 
                 String reversedResult = new StringBuilder(result).reverse().toString();
                 stringBuilder.append("Reversed Data : ").append(reversedResult).append('\n');
+                System.out.println("Reversed Data : " + reversedResult + "\n");
 
-                System.out.println("Echo Data : " + result);
-                System.out.println("Reversed Data : " + reversedResult);
 
                 if (result.indexOf("BYE") >= 0) {
                     break;
@@ -70,4 +68,3 @@ public class UDPMyEcho {
         }
     }
 }
-```
