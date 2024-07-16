@@ -1,11 +1,11 @@
 ```
 /*----------------------------------------------------------------
-?뚯씪紐?: myecho.c
-湲? ??: echo ?쒕퉬?ㅻ? ?붽뎄?섎뒗 TCP(?곌껐?? ?대씪?댁뼵??
-由щ늼??: gcc -o myecho myecho.c
-?좊땳??: gcc -o myecho myecho.c -lsocket -lnsl
-?ъ슜踰?: myecho 127.0.0.1
+myecho.c
+gcc -o myecho myecho.c
+gcc -o myecho myecho.c -lsocket -lnsl
+ myecho 127.0.0.1
 ----------------------------------------------------------------*/
+```
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
